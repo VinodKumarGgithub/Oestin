@@ -7,7 +7,7 @@ export const TitleDescription = ({title,desc}) => {
       textAlign="center" 
      paddingLeft="2em"
      margin="auto"
-     marginTop="5em"
+     my="3em"
      >
        <Text mb={4} fontSize="3xl" color="#444" fontWeight="bold">
        {title}

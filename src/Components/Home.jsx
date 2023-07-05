@@ -5,6 +5,11 @@ import { RoomBox } from "./HomeComponents/RoomBox";
 import { ServicesBox } from "./HomeComponents/ServicesBox";
 import { Navbar } from "./HomeComponents/Navbar/Navbar";
 import { SliderSec } from "./HomeComponents/Slider/Slider";
+import { Footer } from "./Footer/Footer";
+import { Gallery } from "./HomeComponents/Gallery/Gallery";
+import { Blogs } from "./HomeComponents/BlogSec/Blogs";
+import { Clientarea } from "./HomeComponents/ClinetArea";
+import { Pricing } from "./HomeComponents/Pricing/Pricing";
 
 
 export const Home = () => {
@@ -15,6 +20,11 @@ export const Home = () => {
         <About />
        <RoomBox />
        <ServicesBox />
+       <Gallery />
+       <Pricing/>
+       <Blogs />
+       <Clientarea />
+       <Footer />
         </div>
     )
 }

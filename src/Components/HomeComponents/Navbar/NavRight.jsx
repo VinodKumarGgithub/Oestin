@@ -6,17 +6,17 @@ export const NavRight = () => {
     return (
         <>
         {/*  Mobile Menu Area start  */}
-        <div class="mobile-menu-area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="mobile-menu">
+        <div className="mobile-menu-area">
+            <div className="container">
+                <div className="row">
+                    <div className="col-12">
+                        <div className="mobile-menu">
                             <nav id="dropdown">
                                 <ul>
                                     <li><a href="/">HOME</a></li>
                                     <li>
                                         <a href="/hotel-list">ROOMS</a>
-                                        <ul class="submenu">
+                                        <ul className="submenu">
                                             <li><a href="/hotel-list">ROOM LIST</a></li>
                                             <li><a href="/hotel-details">ROOM DETAILS</a></li>
                                         </ul>

@@ -21,7 +21,7 @@ export const About = () => {
 
       <Box>
         <Image src="https://htmldemo.net/oestin/oestin/img/banner/4.jpg" />
-        <i class="zmdi zmdi-play-circle-outline"></i>
+        <i className="zmdi zmdi-play-circle-outline"></i>
       </Box>
 
       <Box maxW="32rem" textAlign="start" paddingLeft="2em">
@@ -33,13 +33,24 @@ export const About = () => {
           dignissimos ex minima atque earum tempora. Cum fugit, eligendi sequi
           doloremque unde, recusandae consequatur sed tenetur repellendus,
           deserunt quas minima.
+          <br/>
+          <br/>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis velit
+          dignissimos ex minima
+          <br/>
+          <br/>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis velit
+          dignissimos ex minima atque earum tempora. Cum fugit, eligendi sequi
+          doloremque unde, recusandae consequatur sed tenetur repellendus,
+          deserunt quas minima. recusandae consequatur sed tenetur repellendus,
+          deserunt quas minima.
         </Text>
         <HStack className="h-social-icon">
-        <a href=""><i class="fa-brands fa-facebook-f" ></i></a>
-        <a href=""><i class="fa-brands fa-instagram"></i></a>
-        <a href=""><i class="fa-solid fa-rss"></i></a>
-        <a href=""><i class="fa-brands fa-twitter"></i></a>
-        <a href=""><i class="fa-brands fa-pinterest-p"></i></a>    
+        <a href=""><i className="fa-brands fa-facebook-f" ></i></a>
+        <a href=""><i className="fa-brands fa-instagram"></i></a>
+        <a href=""><i className="fa-solid fa-rss"></i></a>
+        <a href=""><i className="fa-brands fa-twitter"></i></a>
+        <a href=""><i className="fa-brands fa-pinterest-p"></i></a>    
         </HStack>
       </Box>
     </Box>

@@ -2,12 +2,12 @@ import { NavRight } from "./NavRight"
 import { NavbarLeft } from "./NavbarLeft"
 
 
-export const Navbar = () => {
+export const Navbar = ({scrollDistance}) => {
 
     return (
         <>
-         <header class="header-area fixed header-sticky">
-        <NavbarLeft />
+         <header className="header-area fixed header-sticky" id={scrollDistance>=11?"NavBottomSec-show":""}>
+        <NavbarLeft scrollDistance={scrollDistance}  />
        <NavRight />
     </header>
         </>

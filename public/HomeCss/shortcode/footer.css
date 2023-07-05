@@ -163,15 +163,15 @@
 
 .footer-img a:after,
 .post-img a:after {
-    color: #ffffff;
-    content: "";
+    /* color: #ffffff; */
+    content: '\f0c1';
     font-family: "Material-Design-Iconic-Font";
     font-size: 22px;
     left: 50%;
     margin: auto;
     opacity: 0;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    /* -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)"; */
     position: absolute;
     text-align: center;
     top: 50%;
