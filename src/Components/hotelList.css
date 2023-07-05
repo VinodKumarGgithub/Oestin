@@ -1,0 +1,18 @@
+.hotelView{
+    width: 80%;
+    margin: 50px auto;
+}
+
+.hotelView > div:nth-child(1){
+    text-align: center;
+    margin: 40px 0;
+}
+
+.hotelView > div:nth-child(1) > p{
+   width: 50%;
+   margin: 10px auto 0;
+}
+
+.hotelView > div:nth-child(2) > div:hover{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+ }
