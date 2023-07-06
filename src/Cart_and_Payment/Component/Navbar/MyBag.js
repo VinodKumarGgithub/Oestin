@@ -7,13 +7,10 @@ const MyBag = () => {
       <div id="mybag">
         <div style={{ display: "flex", alignItems: "center" }}>
           <div>
-            <img
-              src="https://thumbs.gfycat.com/AstonishingWhisperedInchworm-size_restricted.gif"
-              alt="bag_gif"
-            />
+            
           </div>
           <div>
-            <h2>My Bag</h2>
+            <h2>MY BOOKING</h2>
           </div>
         </div>
 

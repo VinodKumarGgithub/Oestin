@@ -41,8 +41,9 @@ const Payment = (props) => {
           <div>
             <p style={{ fontSize: "18px", textAlign: "left" }}>
              Arshad Iqbal <br />
-              Asansol Engineering College
-              , Asansol, West Bengal
+             713325 <br />
+            Asansol, West Bengal <br />
+            7098306299
             </p>
           </div>
         </div>
