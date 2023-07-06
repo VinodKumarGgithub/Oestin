@@ -136,6 +136,42 @@
       "price": 3000,
       "numOfNights": 3,
       "id": 3
+    },
+    {
+      "dateStart": "2023-07-22",
+      "dateEnd": "2023-07-29",
+      "adults": 4,
+      "children": 2,
+      "price": 1500,
+      "numOfNights": 8,
+      "id": 4
+    },
+    {
+      "dateStart": "2023-07-08",
+      "dateEnd": "2023-07-09",
+      "adults": 4,
+      "children": 2,
+      "price": 2500,
+      "numOfNights": 2,
+      "id": 5
+    },
+    {
+      "dateStart": "2023-07-08",
+      "dateEnd": "2023-07-09",
+      "adults": 3,
+      "children": 2,
+      "price": 3000,
+      "numOfNights": 2,
+      "id": 6
+    },
+    {
+      "dateStart": "2023-07-14",
+      "dateEnd": "2023-07-17",
+      "adults": 2,
+      "children": 1,
+      "price": 3000,
+      "numOfNights": 4,
+      "id": 7
     }
   ]
 }

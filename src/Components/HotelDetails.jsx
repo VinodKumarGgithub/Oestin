@@ -37,21 +37,30 @@ export const HotelDetails = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        let newVales = {
-            dateStart: dateStart,
-            dateEnd: dateEnd,
-            adults: adults,
-            children: children,
-            price: price,
-            numOfNights: numNights
+        if (
+            (data.name === "Single Room" && adults <= 2 && children <= 1) || 
+            (data.name === "Royal Suit" && adults <= 3 && children <= 3) ||
+            (data.name === "Delux Suit" && adults <= 4 && children <= 5) ||
+            (data.name === "Double Room" && adults <= 6 && children <= 6)
+        ) {
+            let newVales = {
+                dateStart: dateStart,
+                dateEnd: dateEnd,
+                adults: adults,
+                children: children,
+                price: price,
+                numOfNights: numNights
+            }
+            console.log(newVales);
+            axios.post(`http://localhost:8080/booking`, newVales)
+                .then((res) => {
+                    console.log(res.data);
+                }).catch((err) => {
+                    console.log(err);
+                })
+        }else{
+            console.log("Not Added To DATABASE")
         }
-        console.log(newVales);
-        axios.post(`http://localhost:8080/booking`, newVales)
-            .then((res) => {
-                console.log(res.data);
-            }).catch((err) => {
-                console.log(err);
-            })
     }
 
     // Posting Date Data End
@@ -71,17 +80,16 @@ export const HotelDetails = () => {
 
     console.log(checkInDate - checkOutDate)
     // Calculate the number of nights
-    const numNights = Math.round((checkOutDate - checkInDate)/ (1000 * 60 * 60 * 24)) + 1;
+    const numNights = Math.round((checkOutDate - checkInDate) / (1000 * 60 * 60 * 24)) + 1;
 
     var totalPrice;
 
-    if (data.name === "Single Room" && adults <= 2 && children <= 1) {
-        totalPrice = "₹ " + (numNights * perNightPrice)
-    } else if (data.name === "Royal Suit" && adults <= 3 && children <= 3) {
-        totalPrice = "₹ " + (numNights * perNightPrice)
-    } else if (data.name === "Delux Suit" && adults <= 4 && children <= 5) {
-        totalPrice = "₹ " + (numNights * perNightPrice)
-    } else if (data.name === "Double Room" && adults <= 6 && children <= 6) {
+    if (
+        (data.name === "Single Room" && adults <= 2 && children <= 1) || 
+        (data.name === "Royal Suit" && adults <= 3 && children <= 3) ||
+        (data.name === "Delux Suit" && adults <= 4 && children <= 5) ||
+        (data.name === "Double Room" && adults <= 6 && children <= 6)
+    ){
         totalPrice = "₹ " + (numNights * perNightPrice)
     } else {
         totalPrice = data.name + " Can't Go With More Members"
