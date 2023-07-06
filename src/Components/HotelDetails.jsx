@@ -43,6 +43,7 @@ export const HotelDetails = () => {
             adults: adults,
             children: children,
             price: price,
+            numOfNights: numNights
         }
         console.log(newVales);
         axios.post(`http://localhost:8080/booking`, newVales)
@@ -64,28 +65,37 @@ export const HotelDetails = () => {
     };
 
     var price = data.perNight;
+    const checkInDate = new Date(dateStart);
+    const checkOutDate = new Date(dateEnd);
+    const perNightPrice = price;
+
+    console.log(checkInDate - checkOutDate)
+    // Calculate the number of nights
+    const numNights = Math.round((checkOutDate - checkInDate)/ (1000 * 60 * 60 * 24)) + 1;
 
     var totalPrice;
 
-    if(data.name === "Single Room" && adults <= 2 && children <= 1){
-        totalPrice = price * (adults + children)
-    }else if(data.name === "Royal Suit" && adults <= 3 && children <= 3){
-        totalPrice = price * (adults + children)
-    }else if(data.name === "Delux Suit" && adults <= 4 && children <= 5){
-        totalPrice = price * (adults + children)
-    }else if(data.name === "Double Room" && adults <= 6 && children <= 6){
-        totalPrice = price * (adults + children)
-    }else{
+    if (data.name === "Single Room" && adults <= 2 && children <= 1) {
+        totalPrice = "₹ " + (numNights * perNightPrice)
+    } else if (data.name === "Royal Suit" && adults <= 3 && children <= 3) {
+        totalPrice = "₹ " + (numNights * perNightPrice)
+    } else if (data.name === "Delux Suit" && adults <= 4 && children <= 5) {
+        totalPrice = "₹ " + (numNights * perNightPrice)
+    } else if (data.name === "Double Room" && adults <= 6 && children <= 6) {
+        totalPrice = "₹ " + (numNights * perNightPrice)
+    } else {
         totalPrice = data.name + " Can't Go With More Members"
     }
 
+    console.log('Number of nights:', numNights);
+    console.log('Total price:', totalPrice);
 
     return (
         <section>
             <div className="container mt-5">
                 <div className="row">
                     <div className="col-md-8 right">
-                        <div style={{position: "relative"}}>
+                        <div style={{ position: "relative" }}>
                             <img src={data.image} alt={data.name} />
                             <div className="cost">
                                 <h2>₹ {price}</h2>
@@ -228,7 +238,7 @@ export const HotelDetails = () => {
             </div>
 
             {/*  Modal */}
-            <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-header">
@@ -240,8 +250,9 @@ export const HotelDetails = () => {
                             <p>Check Out Date: {dateEnd}</p>
                             <p>Adults: {adults}</p>
                             <p>Childrens: {children}</p>
-                            <p>{data.name} Price: {price} ₹</p>
-                            <p>Total Price: {totalPrice} ₹</p>
+                            <p>Per Night Price: ₹ {price}</p>
+                            <p>Number of Nights: {numNights}</p>
+                            <p>Total Price: {totalPrice} </p>
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>

@@ -16,3 +16,20 @@
 .hotelView > div:nth-child(2) > div:hover{
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
  }
+
+
+ .cost {
+    background: rgba(181,135,109, 1) none repeat scroll 0 0;
+    bottom: 0;
+    height: 100px;
+    padding: 20px 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    width: 170px;
+    color: white;
+}
+
+.cost > h2,p{
+    margin: 5px;
+}

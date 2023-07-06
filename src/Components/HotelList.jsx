@@ -23,6 +23,7 @@ import { Link as RouterLink } from "react-router-dom"
 export const HotelList = () => {
 
     const hotelslist = useSelector((state) => state.hotels)
+
     console.log(hotelslist)
 
     const dispatch = useDispatch();
@@ -31,7 +32,7 @@ export const HotelList = () => {
         dispatch(getHotelRequest());
         axios.get(`http://localhost:8080/hotellist`)
             .then((res) => {
-                console.log(res.data)
+                // console.log(res.data)
                 dispatch(getHotelSuccess(res.data));
             })
             .catch((error) => {
@@ -43,8 +44,6 @@ export const HotelList = () => {
     useEffect(() => {
         getData();
     }, [])
-
-
 
     return (
         <Box className="hotelView">
@@ -63,14 +62,20 @@ export const HotelList = () => {
                         my={10}
                     >
 
-
-                        <Image
-                            objectFit='cover'
-                            maxW={{ base: '100%', sm: '300px' }}
-                            src={hotel.image}
-                            alt={hotel.name}
-                        />
-
+                        <RouterLink to={`/hotel-details/${hotel.id}`}>
+                            <Image
+                                objectFit='cover'
+                                // minW={{ base: '100%', sm: '300px' }}
+                                w="1000px" h="100%"
+                                src={hotel.image}
+                                alt={hotel.name}
+                            />
+                            <div
+                                className="cost">
+                                <h2>₹ {hotel.perNight}</h2>
+                                <p>Per Night</p>
+                            </div>
+                        </RouterLink>
 
                         <Stack>
                             <CardBody my={5}>
@@ -84,11 +89,11 @@ export const HotelList = () => {
                                 <Text py='2'>
                                     {hotel.breakfastinclide}, {hotel.freewifi}, {hotel.privatebalcony}, {hotel.fullac}, {hotel.FlatScreenTV}, {hotel.RoomService}
                                 </Text>
-                                <RouterLink to={`/hotel-details/${hotel.id}`}>
+                                {/* <RouterLink to={`/hotel-details/${hotel.id}`}>
                                     <Button colorScheme='blue'>
                                         Hotel Details
                                     </Button>
-                                </RouterLink>
+                                </RouterLink> */}
                             </CardBody>
                         </Stack>
                     </Card>
