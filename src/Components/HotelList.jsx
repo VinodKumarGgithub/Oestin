@@ -14,7 +14,6 @@ import {
     Text,
     Image,
     Box,
-    CardFooter,
     Button,
 } from '@chakra-ui/react'
 import "../Components/hotelList.css"
@@ -23,8 +22,8 @@ import { Link as RouterLink } from "react-router-dom"
 
 export const HotelList = () => {
 
-    const hotels = useSelector((state) => state.hotels)
-    console.log(hotels)
+    const hotelslist = useSelector((state) => state.hotels)
+    console.log(hotelslist)
 
     const dispatch = useDispatch();
 
@@ -54,7 +53,7 @@ export const HotelList = () => {
                 <p>Oestin hotel search allows users to compare hotel prices in just a few clicks from hundreds of booking sites for more than 5.0 million hotels</p>
             </div>
             <div>
-                {hotels?.map((hotel) => (
+                {hotelslist?.map((hotel) => (
 
                     <Card
                         direction={{ base: 'column', sm: 'row' }}
