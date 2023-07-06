@@ -1,6 +1,12 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom"
+import { MyContext } from "../../../ContextApi/MyContext";
+import { useContext } from "react";
 
 export const PricingCard = ({title,Price,clas}) => {
+  const login = useSelector((state) => (state.login_status));
+  const { handleLoginClose } = useContext(MyContext);
+
     return (
         <>
         
@@ -22,7 +28,11 @@ export const PricingCard = ({title,Price,clas}) => {
                     <span className={clas==1?"light":''}>Face Make</span>
                 </div>
                 <div className="signup-btn">
-                    <Link to="/" className="default-btn">SIGN UP</Link>
+                    {
+                        login?<Link to="/" className="default-btn">BUY</Link> :
+                        <Link  className="default-btn" onClick={()=>handleLoginClose(true)}>SIGN UP</Link> 
+                        
+                    }
                 </div>
             </div>
         </div>

@@ -14,7 +14,7 @@ export const RoomBox = () => {
          doloremque unde' />
 
     {/* our room img-box */}
-    <Grid templateColumns='repeat(4, 1fr)' h='40em'>
+    <Grid id="room_card" templateColumns='repeat(4, 1fr)' h='40em'>
        {
         RoomArr.map((ele,i)=>(<RoomCard key={i} i={i+1}/>))
        }

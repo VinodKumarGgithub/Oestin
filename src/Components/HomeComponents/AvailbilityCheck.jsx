@@ -1,6 +1,13 @@
 import { Button, Flex,Box, Spacer, Input, Select, Text, HStack,Image,Heading } from "@chakra-ui/react";
+import { useState } from "react";
 
 export const Availibility = () =>{
+    let [query,setQuery] = useState({
+        from:'',
+        to:'',
+        children:'',
+        adult:'',
+     })
     return (
         <Box  display="flex" alignItems="center" 
         justifyContent="space-evenly"
@@ -13,6 +20,7 @@ export const Availibility = () =>{
         zIndex='2'
         bg='white'
         position={'relative'}
+        id="availbility_box"
         >
           <Input 
            placeholder="Select Date and Time"
@@ -22,6 +30,10 @@ export const Availibility = () =>{
            color='#626262'
            fontSize='90%'
            title="From"
+           value={query.from}
+           onChange={(e)=>{
+            setQuery({...query,from:e.target.value})
+           }}
           />
           <Input 
            placeholder="Select Date and Time"
@@ -31,11 +43,19 @@ export const Availibility = () =>{
            color='#626262'
            fontSize='90%'
            title="To"
+           value={query.to}
+           onChange={(e)=>{
+            setQuery({...query,to:e.target.value})
+           }}
           />
         <Select placeholder='ADULTS'
          w='15%'
          color='#626262'
          fontSize='90%'
+         value={query.adult}
+         onChange={(e)=>{
+            setQuery({...query,adult:e.target.value})
+           }}
          >
             <option value='1'>1</option>
             <option value='2'>2</option>
@@ -48,6 +68,10 @@ export const Availibility = () =>{
          w='15%'
          color='#626262'
          fontSize='90%'
+         value={query.children}
+         onChange={(e)=>{
+            setQuery({...query,children:e.target.value})
+           }}
          >
             <option value='1'>1</option>
             <option value='2'>2</option>
@@ -62,6 +86,7 @@ export const Availibility = () =>{
         background='#b5876d none repeat scroll 0 0' 
         fontSize='90%'
         className="default-btn"
+        onClick={()=>console.log(query)}
         >CHECK AVAILABILITY</Button>
          
         </Box>

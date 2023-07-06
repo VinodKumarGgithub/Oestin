@@ -9,6 +9,7 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
+import { wrap } from "framer-motion";
 
 export const About = () => {
   return (
@@ -17,11 +18,12 @@ export const About = () => {
       margin="auto"
       marginTop="5em"
       display="flex"
+      id="abouth_us"
     >
 
-      <Box>
+      <Box >
         <Image src="https://htmldemo.net/oestin/oestin/img/banner/4.jpg" />
-        <i className="zmdi zmdi-play-circle-outline"></i>
+        
       </Box>
 
       <Box maxW="32rem" textAlign="start" paddingLeft="2em">

@@ -27,7 +27,7 @@ export const Gallery = () => {
                 <button data-filter=".hotel">Hotel</button>
             </div>
 
-            <div className="gallery gallery-masonry">
+            <div className="gallery gallery-masonry" >
                 <div className="gallery-item spa gym">
                     <div className="thumb">
                         <img src="img/gallery/1.jpg" alt="" />

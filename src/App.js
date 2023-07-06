@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AllRoutes } from './AllRoutes';
 import './App.css';
 import './home.css'
 import { Navbar } from './Components/HomeComponents/Navbar/Navbar';
+import { Registration } from './Components/Registration/Registration';
+import { MyContext, MyProvider } from './ContextApi/MyContext';
 
 function App() {
   const [scrollDistance, setScrollDistance] = useState(0);
+  const { handleLoginClose,loginPopup } = useContext(MyContext);
 
   useEffect(() => {
     function updateScrollDistance() {
@@ -23,10 +26,11 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <Navbar scrollDistance={scrollDistance} />
-      <AllRoutes />
-    </div>
+      <div className="App">
+        <Navbar scrollDistance={scrollDistance} />
+   {    loginPopup&&<Registration />}
+        <AllRoutes />
+      </div>
   );
 }
 

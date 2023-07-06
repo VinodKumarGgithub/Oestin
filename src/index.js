@@ -7,15 +7,18 @@ import { ChakraProvider } from '@chakra-ui/react';
 import { store} from './Redux/store'
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import {  MyProvider } from './ContextApi/MyContext';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-<ChakraProvider >
-  <Provider store={store} >
-    <BrowserRouter >
-    <App />
-    </BrowserRouter>
+  <Provider store={store}>
+    <MyProvider >
+       <ChakraProvider >
+        <BrowserRouter >
+        <App />
+      </BrowserRouter>
+       </ChakraProvider>
+     </MyProvider>
   </Provider>
-</ChakraProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

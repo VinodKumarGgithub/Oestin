@@ -15,7 +15,7 @@ export const Pricing = () => {
         doloremque unde'  />
         
 
-            <div className="row price_container">
+            <div className="row price_container" >
                 <PricingCard
                  title='Silver Pack'
                  Price='150'

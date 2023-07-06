@@ -10,6 +10,7 @@ import { Gallery } from "./HomeComponents/Gallery/Gallery";
 import { Blogs } from "./HomeComponents/BlogSec/Blogs";
 import { Clientarea } from "./HomeComponents/ClinetArea";
 import { Pricing } from "./HomeComponents/Pricing/Pricing";
+import { Registration } from "./Registration/Registration";
 
 
 export const Home = () => {
