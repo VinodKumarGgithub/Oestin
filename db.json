@@ -24,7 +24,8 @@
       "FlatScreenTV": "Flat Screen TV",
       "BeachView": "Beach View",
       "RoomService": "Room Service",
-      "roomAvalaibilty": false
+      "roomAvalaibilty": false,
+      "perNight": 1500
     },
     {
       "id": 2,
@@ -50,7 +51,8 @@
       "FlatScreenTV": "Flat Screen TV",
       "BeachView": "Beach View",
       "RoomService": "Room Service",
-      "roomAvalaibilty": true
+      "roomAvalaibilty": true,
+      "perNight": 3000
     },
     {
       "id": 3,
@@ -76,7 +78,8 @@
       "FlatScreenTV": "Flat Screen TV",
       "BeachView": "Beach View",
       "RoomService": "Room Service",
-      "roomAvalaibilty": false
+      "roomAvalaibilty": false,
+      "perNight": 4000
     },
     {
       "id": 4,
@@ -102,7 +105,8 @@
       "FlatScreenTV": "Flat Screen TV",
       "BeachView": "Beach View",
       "RoomService": "Room Service",
-      "roomAvalaibilty": true
+      "roomAvalaibilty": true,
+      "perNight": 2500
     }
   ],
   "booking": [
@@ -161,6 +165,46 @@
       "adults": 2,
       "children": 1,
       "id": 8
+    },
+    {
+      "dateStart": "2023-07-27",
+      "dateEnd": "2023-07-28",
+      "adults": 5,
+      "children": 5,
+      "price": 2500,
+      "id": 9
+    },
+    {
+      "dateStart": "2023-07-31",
+      "dateEnd": "2023-08-01",
+      "adults": 2,
+      "children": 1,
+      "price": 2500,
+      "id": 10
+    },
+    {
+      "dateStart": "2023-07-22",
+      "dateEnd": "2023-07-23",
+      "adults": 6,
+      "children": 6,
+      "price": 2500,
+      "id": 11
+    },
+    {
+      "dateStart": "2023-07-20",
+      "dateEnd": "2023-07-21",
+      "adults": 4,
+      "children": 4,
+      "price": 1500,
+      "id": 12
+    },
+    {
+      "dateStart": "2023-07-14",
+      "dateEnd": "2023-07-15",
+      "adults": 2,
+      "children": 1,
+      "price": 1500,
+      "id": 13
     }
   ]
 }

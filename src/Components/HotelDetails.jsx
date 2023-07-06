@@ -11,7 +11,6 @@ export const HotelDetails = () => {
     const [children, setChildren] = useState(0);
     const [showRequiredMessage, setShowRequiredMessage] = useState(false);
 
-
     const { id } = useParams();
 
     const [data, setData] = useState([]);
@@ -36,8 +35,6 @@ export const HotelDetails = () => {
 
     // Posting Date Data Start
 
-    const [booking,setBooking]=useState({});
-
     const handleSubmit = (e) => {
         e.preventDefault();
         let newVales = {
@@ -45,12 +42,12 @@ export const HotelDetails = () => {
             dateEnd: dateEnd,
             adults: adults,
             children: children,
+            price: price,
         }
         console.log(newVales);
         axios.post(`http://localhost:8080/booking`, newVales)
             .then((res) => {
-                console.log(setBooking(res.data));
-                console.log(booking);
+                console.log(res.data);
             }).catch((err) => {
                 console.log(err);
             })
@@ -66,13 +63,34 @@ export const HotelDetails = () => {
         }
     };
 
+    var price = data.perNight;
+
+    var totalPrice;
+
+    if(data.name === "Single Room" && adults <= 2 && children <= 1){
+        totalPrice = price * (adults + children)
+    }else if(data.name === "Royal Suit" && adults <= 3 && children <= 3){
+        totalPrice = price * (adults + children)
+    }else if(data.name === "Delux Suit" && adults <= 4 && children <= 5){
+        totalPrice = price * (adults + children)
+    }else if(data.name === "Double Room" && adults <= 6 && children <= 6){
+        totalPrice = price * (adults + children)
+    }else{
+        totalPrice = data.name + " Can't Go With More Members"
+    }
+
+
     return (
         <section>
             <div className="container mt-5">
                 <div className="row">
                     <div className="col-md-8 right">
-                        <div>
+                        <div style={{position: "relative"}}>
                             <img src={data.image} alt={data.name} />
+                            <div className="cost">
+                                <h2>₹ {price}</h2>
+                                <p>Per Night</p>
+                            </div>
                         </div>
 
                         <div className="my-4">
@@ -222,6 +240,8 @@ export const HotelDetails = () => {
                             <p>Check Out Date: {dateEnd}</p>
                             <p>Adults: {adults}</p>
                             <p>Childrens: {children}</p>
+                            <p>{data.name} Price: {price} ₹</p>
+                            <p>Total Price: {totalPrice} ₹</p>
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
