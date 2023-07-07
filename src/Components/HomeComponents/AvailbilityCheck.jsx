@@ -6,7 +6,7 @@ export const Availibility = () =>{
         from:'',
         to:'',
         children:'',
-        adult:'',
+        adults:'',
      })
     return (
         <Box  display="flex" alignItems="center" 

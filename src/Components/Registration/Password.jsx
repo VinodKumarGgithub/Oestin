@@ -1,9 +1,9 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link} from 'react-router-dom'
 import { Checkbox, useToast} from '@chakra-ui/react'
 import { MyContext } from '../../ContextApi/MyContext';
-import { handleLoginSuccess, postUserStatus } from '../../Redux/action';
+import { getdata, handleLoginSuccess, postUserStatus } from '../../Redux/action';
 export const Password = ({handlePage,user,password}) => {
     let [users,setUsers] = useState(useSelector((state)=>state.UserList))
     let [err,setErr] = useState(false)
@@ -32,9 +32,12 @@ export const Password = ({handlePage,user,password}) => {
     })
   }
    
+  useEffect(()=>{
+   getdata(dispatch)
+   console.log(users,'[][///');
+  },[user])
     function passValidation() {
         // password
-      
        let flag =true
         users?.map(function (ele) {
           if ( (ele.mail == user && ele.Password == inputPass) || (ele.ph == user && ele.Password == inputPass) ) {
@@ -66,7 +69,7 @@ export const Password = ({handlePage,user,password}) => {
          <div id="otp_forgot">
             <div>
             <Checkbox size='md' colorScheme='yellow' defaultChecked>
-               Checkbox
+               Remeber Password
             </Checkbox>
             </div>
             <Link to="#" id="forgot_pass">Forgot Password</Link>

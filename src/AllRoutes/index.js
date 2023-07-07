@@ -14,10 +14,9 @@ export const AllRoutes = () => {
             <Route path='/' element={<Home />} />
             <Route path='/signup' element={<Signup/> }/>
             <Route path='/otp' element={<Otp/> }/>
-            <Route path='*' element={<Home />} />
             <Route path='/Payment' element={<Payment />} />
             <Route path='/room-list' element={<HotelList /> } />
-            <Route path='/room-details' element={<HotelDetails />} />
+            <Route path='/room-details/:id' element={<HotelDetails />} />
         </Routes>
     )
 }

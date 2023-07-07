@@ -25,7 +25,6 @@ export const Home = () => {
        <Pricing/>
        <Blogs />
        <Clientarea />
-       <Footer />
         </div>
     )
 }

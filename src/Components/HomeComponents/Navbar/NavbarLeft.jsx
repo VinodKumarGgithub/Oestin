@@ -65,7 +65,7 @@ export const NavbarLeft = ({ scrollDistance }) => {
                     <Link to="/room-list">ROOMS</Link>
                     <ul className="submenu">
                       <li><Link to="/room-list">ROOM LIST</Link></li>
-                      <li><Link to="/room-details">ROOM DETAILS</Link></li>
+                      <li><Link to="/room-details/1">ROOM DETAILS</Link></li>
                     </ul>
                   </li>
                   <li>

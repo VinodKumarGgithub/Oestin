@@ -15,9 +15,9 @@ export const NavRight = () => {
                                 <ul>
                                     <li><a href="/">HOME</a></li>
                                     <li>
-                                        <a href="/hotel-list">ROOMS</a>
+                                        <a href="/room-list">ROOMS</a>
                                         <ul className="submenu">
-                                            <li><a href="/hotel-list">ROOM LIST</a></li>
+                                            <li><a href="/room-list">ROOM LIST</a></li>
                                             <li><a href="/hotel-details">ROOM DETAILS</a></li>
                                         </ul>
                                     </li>

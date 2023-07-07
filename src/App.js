@@ -5,6 +5,7 @@ import './home.css'
 import { Navbar } from './Components/HomeComponents/Navbar/Navbar';
 import { Registration } from './Components/Registration/Registration';
 import { MyContext, MyProvider } from './ContextApi/MyContext';
+import { Footer } from './Components/Footer/Footer';
 
 function App() {
   const [scrollDistance, setScrollDistance] = useState(0);
@@ -30,6 +31,7 @@ function App() {
         <Navbar scrollDistance={scrollDistance} />
    {    loginPopup&&<Registration />}
         <AllRoutes />
+       <Footer />
       </div>
   );
 }

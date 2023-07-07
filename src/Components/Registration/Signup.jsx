@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Otp } from "./OTP"
 import { Password } from './Password'
 import { useContext, useEffect, useState } from "react"
-import { handleLoginFailure, handleLoginSuccess, handleUserList, postdata } from "../../Redux/action"
+import { getdata, handleLoginFailure, handleLoginSuccess, handleUserList, postdata } from "../../Redux/action"
 import { MyContext } from "../../ContextApi/MyContext";
 import { useToast } from '@chakra-ui/react'
 
@@ -45,10 +45,9 @@ export const Signup = ({ handlePage, setPassword, handleUsername }) => {
     for (let i = 0; i < 4; i++) Otp += Math.floor(Math.random() * 10);
     for (let i = 0; i < 6; i++)
       password += str.charAt(Math.floor(Math.random() * str.length));
-    console.log('userInput', username);
+
     setPassword(pre => password)
     handleUsername(pre => username)
-
     let input = username;
     let size = input.length;
     let wrong_cred = document.querySelector("#ph_number+span");
@@ -88,7 +87,7 @@ export const Signup = ({ handlePage, setPassword, handleUsername }) => {
     if (flag) {
       if (input.includes("@gmail.com")) {
         console.log("email... New :", Otp);
-        handlePage(2)
+        
 
         //  email for new user_________________________________________________
         window.Email.send({
@@ -127,7 +126,9 @@ export const Signup = ({ handlePage, setPassword, handleUsername }) => {
             users.push(obj);
             postdata(obj);
             dispatch(handleUserList(obj))
+            getdata(dispatch)
             handleMailToast()
+            handlePage(2)
             // window.location.href="index.html-----------"
           } else {
             // alert(message);

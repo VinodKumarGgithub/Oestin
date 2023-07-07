@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import { Provider } from 'react-redux';
 import { ChakraProvider } from '@chakra-ui/react';
-import { store} from './Redux/store'
+import { store } from './Redux/store'
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import {  MyProvider } from './ContextApi/MyContext';
