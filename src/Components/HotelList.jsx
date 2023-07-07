@@ -15,6 +15,7 @@ import {
     Image,
     Box,
     Button,
+    Spinner,
 } from '@chakra-ui/react'
 import "../Components/hotelList.css"
 import { Link as RouterLink } from "react-router-dom"
@@ -23,6 +24,7 @@ import { Link as RouterLink } from "react-router-dom"
 export const HotelList = () => {
 
     const hotelslist = useSelector((state) => state.hotels)
+    const loading = useSelector((state) => state.isLoading)
 
     console.log(hotelslist)
 
@@ -64,6 +66,9 @@ export const HotelList = () => {
                     <Heading>OUR ATR ROOMS</Heading>
                     <p>Oestin hotel search allows users to compare hotel prices in just a few clicks from hundreds of booking sites for more than 5.0 million hotels</p>
                 </div>
+             {
+                loading ?   <Spinner  thickness='2px'
+                speed='0.15s'ml='40vw' p='2em' size='xl' /> :  
                 <div>
                     {hotelslist?.map((hotel) => (
 
@@ -113,7 +118,7 @@ export const HotelList = () => {
 
                     ))}
                 </div>
-
+            }
             </Box>
         </>
 

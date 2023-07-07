@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import "../Components/hotelDetails.css"
-import { Button, Grid, Input, Select, useToast } from '@chakra-ui/react'
+import { Button, Grid, Input, Select, Spinner, useToast } from '@chakra-ui/react'
 import { RoomCard } from "./HomeComponents/RoomSec/RoomCard";
 import { RoomBox } from "./HomeComponents/RoomBox";
 import { Clientarea } from "./HomeComponents/ClinetArea";
-import { useDispatch } from "react-redux"
-import { CartValue } from "../Redux/action"
+import { useDispatch, useSelector } from "react-redux"
+import { CartValue, getHotelDetailFailure, getHotelDetailRequest, getHotelDetailSuccess } from "../Redux/action"
+import { MyContext } from "../ContextApi/MyContext";
 
 export const HotelDetails = () => {
+    let login_status = useSelector((state) => state.login_status)
 
     const [dateStart, setDateStart] = useState("")
     const [dateEnd, setDateEnd] = useState("")
@@ -17,6 +19,8 @@ export const HotelDetails = () => {
     const [imgShow, setImg] = useState('');
     const [children, setChildren] = useState(0);
     let RoomArr = Array(4).fill(0)
+    const { handleLoginClose } = useContext(MyContext);
+    const loading = useSelector((state) => state.isLoading)
 
 
     const dispatch = useDispatch()
@@ -40,6 +44,7 @@ export const HotelDetails = () => {
             duration: 3000,
             isClosable: true,
         })
+        navigate(`/Payment`)
     }
     const handleError = (mes) => {
         toast({
@@ -51,15 +56,28 @@ export const HotelDetails = () => {
             isClosable: true,
         })
     }
+    const handleLoginToast = (mes) => {
+        toast({
+            title: 'Please login to proceed',
+            position: 'top-right',
+            status: 'warning',
+            duration: 3000,
+            isClosable: true,
+        })
+        handleLoginClose(true)
+    }
     // Get Single Hotel Data Sart
 
     const getSingleData = () => {
+        dispatch(getHotelDetailRequest())
         axios.get(`https://specialized.onrender.com/hotellist/${id}`)
             .then((res) => {
                 setData(res.data)
                 setImg(res.data.image)
+                dispatch(getHotelDetailSuccess())
             }).catch((error) => {
                 console.log(error)
+                dispatch(getHotelDetailFailure())
             })
     }
 
@@ -73,7 +91,7 @@ export const HotelDetails = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!dateStart || !dateEnd || adults < 1) {
+       if(login_status) {  if (!dateStart || !dateEnd || adults < 1) {
             const showAlertfields = document.getElementById("showAlertfields")
             showAlertfields.textContent = "Fill all the fields"
             console.log("Data not Added")
@@ -109,11 +127,10 @@ export const HotelDetails = () => {
                 "Total Price: " + totalPrice;
             // alert(alertMessage);
             if (totalPrice === data.name + " Can't Go With More Members") {
-                navigate(`/room-details/${id}`)
+                // navigate(`/room-details/${id}`)
             } else {
                 handleAvailable()
                 dispatch(CartValue(totalPrice))
-                navigate(`/Payment`)
             }
 
         } else {
@@ -121,6 +138,9 @@ export const HotelDetails = () => {
             // alert(data.name + " Can't Go With More Members")
             handleError(data.name + " Can't Go With More Members");
         }
+    }else{
+        handleLoginToast()
+    }
     }
 
     // Posting Date Data End
@@ -168,10 +188,14 @@ export const HotelDetails = () => {
                     </div>
                 </div>
             </section>
-
+            {
+                loading ?  <Spinner  thickness='2px'
+                speed='0.15s'my='10em' mx='40vw' p='2em' size='xl' /> : 
+            
             <section>
                 <div className="container mt-5">
                     <div className="row">
+                        
                         <div className="col-md-8 right">
                             <div style={{ position: "relative" }}>
                                 <img src={imgShow} alt={data.name} />
@@ -222,6 +246,7 @@ export const HotelDetails = () => {
                                 </ul>
                             </div>
                         </div>
+
                         <div className="col-md-4">
                             <div className="reservation">
                                 <h4 className="room-details-title">YOUR RESERVATION</h4>
@@ -319,6 +344,7 @@ export const HotelDetails = () => {
 
                 <Clientarea />
             </section>
+            }
         </>
 
     )

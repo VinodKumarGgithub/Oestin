@@ -498,6 +498,7 @@ p+#close {
   font-size: 15px;
   text-transform: none;
   border-radius: 5px;
+  background-color: transparent !important;
 }
 
 .h_container form .row .col .inputBox input:focus{
@@ -542,6 +543,74 @@ p+#close {
 #btn{
   text-align: center;
 }
+
+
+/* Thankyou Page______________________ */
+
+#loading {
+  width: 100%;
+  height: 100vh;
+  /* background: #ffffff url('Molecular DNA.gif') no-repeat center; */
+  position: fixed;
+  z-index: 99999;
+}
+body {
+  /* background-color: white; */
+  background-color: #1f2322;
+}
+#companylogo {
+  display: flex;
+  justify-content: right;
+  height: 90px;
+  margin-top: -30px;
+  margin-bottom: -30px;
+}
+
+#t_container {
+/* position: fixed; */
+/* top: -2%; */
+width: 100vw;
+height: 100vh;
+text-align: center;
+/* left: 5%; */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+color: aliceblue;
+padding-bottom:200px ;
+letter-spacing: 2px; text-shadow: 0 0 15px rgba(11, 71, 223, 0.97);
+}
+#t_logo {
+  width: 100%;
+  padding: 20px 0;
+  font-size: 100px;
+  color: aliceblue;
+}
+#t_container h1 {
+  color: aliceblue;
+  letter-spacing: 5px;
+  font-size: 45px;
+}
+
+#t_container #thank{
+  margin-left:10px;
+ color: aliceblue;
+ font-size: 18px;
+ letter-spacing: 2px;
+} 
+#t_container button{
+  border: none;
+  background-color: rgba(0, 0, 0, 0.558);
+  color: aliceblue;
+  font-size: 17px;
+  letter-spacing: 2px;
+  border: 2px solid #6409c643;
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+
 
 /* payement css___ends___________here */
 @media all and (max-width:600px) {

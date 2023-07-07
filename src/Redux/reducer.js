@@ -1,5 +1,8 @@
 import {
   CART_VALUE,
+  GET_HOTEL_DETAILS_FAILURE,
+  GET_HOTEL_DETAILS_REQUEST,
+  GET_HOTEL_DETAILS_SUCCESS,
   GET_HOTEL_FAILURE,
   GET_HOTEL_REQUEST,
   GET_HOTEL_SUCCESS,
@@ -20,6 +23,7 @@ const initState = {
   };
   
   export const reducer = (state = initState, { type, payload }) => {
+    console.log();
     switch (type) {
       case 'SET_LOGIN_STATUS_SUCCESS':
         return {
@@ -68,7 +72,6 @@ const initState = {
       case POST_HOTEL_REQUEST:
           return {
               ...state,
-              isLoading: true,
           }
 
       case POST_HOTEL_SUCCESS:
@@ -80,6 +83,22 @@ const initState = {
           }
 
       case POST_HOTEL_FAILURE:
+          return {
+              ...state,
+              isLoading: false,
+              isError: true,
+          }
+        case GET_HOTEL_DETAILS_REQUEST:
+          return {
+              ...state,
+              isLoading: true,
+          }
+      case GET_HOTEL_DETAILS_SUCCESS:
+          return {
+              ...state,
+              isLoading: false,
+          }
+      case GET_HOTEL_DETAILS_FAILURE:
           return {
               ...state,
               isLoading: false,

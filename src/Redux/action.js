@@ -2,6 +2,9 @@
 
 import {
   CART_VALUE,
+  GET_HOTEL_DETAILS_FAILURE,
+  GET_HOTEL_DETAILS_REQUEST,
+  GET_HOTEL_DETAILS_SUCCESS,
   GET_HOTEL_FAILURE,
   GET_HOTEL_REQUEST,
   GET_HOTEL_SUCCESS,
@@ -60,6 +63,18 @@ export const postHotelSuccess = (payload) => {
 
 export const postHotelFailure = () => {
   return ({ type: POST_HOTEL_FAILURE })
+} 
+
+export const getHotelDetailRequest = () => {
+  return ({ type: GET_HOTEL_DETAILS_REQUEST})
+}
+
+export const getHotelDetailSuccess = (payload) => {
+  return ({ type: GET_HOTEL_DETAILS_SUCCESS})
+}
+
+export const getHotelDetailFailure = () => {
+  return ({ type: GET_HOTEL_DETAILS_FAILURE})
 } 
 
 export const getdata = async (dispatch) => {
