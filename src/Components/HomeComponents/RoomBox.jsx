@@ -5,7 +5,28 @@ import { Grid, GridItem } from '@chakra-ui/react'
 import { RoomCard } from "./RoomSec/RoomCard";
 
 export const RoomBox = () => {
-    let RoomArr = Array(4).fill(0)
+    let RoomArr = [
+        {
+     title:'Royal Suit',
+     description:'',
+     price:'220'
+        },
+         {
+     title:'Deluxe Suit',
+     description:'',
+     price:'150'
+        },
+        {
+     title:'Single Room',
+     description:'',
+     price:'100'
+        },
+         {
+     title:'Double Room',
+     description:'',
+     price:'120'
+        },
+    ]
     return (
         <>
       <TitleDescription title='OUR FAVORITE ROOMS' desc='
@@ -16,7 +37,7 @@ export const RoomBox = () => {
     {/* our room img-box */}
     <Grid id="room_card" templateColumns='repeat(4, 1fr)' h='40em'>
        {
-        RoomArr.map((ele,i)=>(<RoomCard key={i} i={i+1}/>))
+        RoomArr.map((ele,i)=>(<RoomCard ele={ele} key={i} i={i+1}/>))
        }
     </Grid>
 

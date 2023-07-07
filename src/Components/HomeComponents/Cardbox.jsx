@@ -15,7 +15,7 @@ import {
   Image 
 } from "@chakra-ui/react";
 
-export const Cardbox = () => {
+export const Cardbox = ({ele}) => {
   return (
    <>
    <Card align='center'
@@ -28,7 +28,7 @@ export const Cardbox = () => {
    zIndex='2'
    >
   <CardHeader >
-    <Text fontSize='2xl'  fontWeight='bold'>Royal suit</Text>
+    <Text fontSize='2xl'  fontWeight='bold'>{ele.title}</Text>
   </CardHeader>
   <Box  
    >
@@ -36,7 +36,7 @@ export const Cardbox = () => {
   <CardFooter display='flex' justifyContent='center'>
   <Button bg='#b5876d' borderRadius='2px' color='white' w='8em' className="default-btn">Details</Button>
   </CardFooter>
-    <Box color='white' fontSize='2xl' textAlign='end' w='90%'>$250 </Box>
+    <Box color='white' fontSize='2xl' textAlign='end' w='90%'>${ele.price}</Box>
   </Box>
   
 </Card>
