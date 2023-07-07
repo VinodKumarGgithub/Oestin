@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import "../Components/hotelDetails.css"
 
@@ -9,9 +9,10 @@ export const HotelDetails = () => {
     const [dateEnd, setDateEnd] = useState("")
     const [adults, setAdults] = useState(0);
     const [children, setChildren] = useState(0);
-    const [showRequiredMessage, setShowRequiredMessage] = useState(false);
 
     const { id } = useParams();
+
+    const navigate = useNavigate();
 
     const [data, setData] = useState([]);
 
@@ -37,8 +38,15 @@ export const HotelDetails = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (
-            (data.name === "Single Room" && adults <= 2 && children <= 1) || 
+        if (!dateStart || !dateEnd || adults < 1) {
+            const showAlertfields = document.getElementById("showAlertfields")
+            showAlertfields.textContent = "Fill all the fields"
+            console.log("Data not Added")
+            setTimeout(() => {
+                window.location.reload();
+            }, 2000);
+        } else if (
+            (data.name === "Single Room" && adults <= 2 && children <= 1) ||
             (data.name === "Royal Suit" && adults <= 3 && children <= 3) ||
             (data.name === "Delux Suit" && adults <= 4 && children <= 5) ||
             (data.name === "Double Room" && adults <= 6 && children <= 6)
@@ -58,21 +66,34 @@ export const HotelDetails = () => {
                 }).catch((err) => {
                     console.log(err);
                 })
-        }else{
-            console.log("Not Added To DATABASE")
+
+
+            const alertMessage = "Check In Date: " + dateStart + "\n" +
+                "Check Out Date: " + dateEnd + "\n" +
+                "Adults: " + adults + "\n" +
+                "Childrens: " + children + "\n" +
+                "Per Night Price: ₹ " + price + "\n" +
+                "Number of Nights: " + numNights + "\n" +
+                "Total Price: " + totalPrice;
+            alert(alertMessage);
+            if (totalPrice === data.name + " Can't Go With More Members") {
+                navigate(`/hotel-details/${id}`)
+            } else {
+                navigate(`/Payment`)
+            }
+
+        } else {
+            console.log("DataNOt ADDED")
+            alert(data.name + " Can't Go With More Members")
+            setTimeout(() => {
+                window.location.reload();
+            }, 2000);
         }
     }
 
     // Posting Date Data End
 
-    const checkRequiredFields = () => {
-        if (!dateStart || !dateEnd || adults < 1) {
-            setShowRequiredMessage(true);
-        } else {
-            setShowRequiredMessage(false);
-        }
-    };
-
+    
     var price = data.perNight;
     const checkInDate = new Date(dateStart);
     const checkOutDate = new Date(dateEnd);
@@ -85,11 +106,11 @@ export const HotelDetails = () => {
     var totalPrice;
 
     if (
-        (data.name === "Single Room" && adults <= 2 && children <= 1) || 
+        (data.name === "Single Room" && adults <= 2 && children <= 1) ||
         (data.name === "Royal Suit" && adults <= 3 && children <= 3) ||
         (data.name === "Delux Suit" && adults <= 4 && children <= 5) ||
         (data.name === "Double Room" && adults <= 6 && children <= 6)
-    ){
+    ) {
         totalPrice = "₹ " + (numNights * perNightPrice)
     } else {
         totalPrice = data.name + " Can't Go With More Members"
@@ -188,9 +209,9 @@ export const HotelDetails = () => {
                                     <option value="5">5</option>
                                     <option value="6">6</option>
                                 </select>
-                                {showRequiredMessage && <p>Please fill in all required fields.</p>}
+                                <p id="showAlertfields"></p>
                                 <div>
-                                    <button className="btn texr-center" type="submit" onClick={checkRequiredFields} data-bs-toggle="modal" data-bs-target="#exampleModal">CHECK AVAILABILITY</button>
+                                    <button className="btn texr-center" type="submit" >CHECK AVAILABILITY</button>
                                 </div>
                             </form>
                         </div>
@@ -245,30 +266,7 @@ export const HotelDetails = () => {
                 </div>
             </div>
 
-            {/*  Modal */}
-            <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div className="modal-dialog">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h1 className="modal-title fs-5" id="exampleModalLabel">{data.name}</h1>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div className="modal-body">
-                            <p>Check In Date: {dateStart}</p>
-                            <p>Check Out Date: {dateEnd}</p>
-                            <p>Adults: {adults}</p>
-                            <p>Childrens: {children}</p>
-                            <p>Per Night Price: ₹ {price}</p>
-                            <p>Number of Nights: {numNights}</p>
-                            <p>Total Price: {totalPrice} </p>
-                        </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            {/* <button type="button" className="btn btn-primary">Save changes</button> */}
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
         </section>
 
 
