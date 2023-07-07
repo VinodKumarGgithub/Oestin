@@ -46,62 +46,76 @@ export const HotelList = () => {
     }, [])
 
     return (
-        <Box className="hotelView">
-            <div>
-                <Heading>OUR ATR ROOMS</Heading>
-                <p>Oestin hotel search allows users to compare hotel prices in just a few clicks from hundreds of booking sites for more than 5.0 million hotels</p>
-            </div>
-            <div>
-                {hotelslist?.map((hotel) => (
 
-                    <Card
-                        direction={{ base: 'column', sm: 'row' }}
-                        overflow='hidden'
-                        variant='outline'
-                        key={hotel.id}
-                        my={10}
-                    >
+        <>
+            <section className="bg">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-12 text-center bg-head text-white">
+                            <h2 style={{ color: "white" }}>ROOM - LIST VIEW</h2>
+                            <p>A quality room of Oestin with sea or mountain view</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-                        <RouterLink to={`/room-details/${hotel.id}`}>
-                            <Image
-                                objectFit='cover'
-                                // minW={{ base: '100%', sm: '300px' }}
-                                w="1000px" h="100%"
-                                src={hotel.image}
-                                alt={hotel.name}
-                            />
-                            <div
-                                className="cost">
-                                <h2>₹ {hotel.perNight}</h2>
-                                <p>Per Night</p>
-                            </div>
-                        </RouterLink>
+            <Box className="hotelView">
+                <div>
+                    <Heading>OUR ATR ROOMS</Heading>
+                    <p>Oestin hotel search allows users to compare hotel prices in just a few clicks from hundreds of booking sites for more than 5.0 million hotels</p>
+                </div>
+                <div>
+                    {hotelslist?.map((hotel) => (
 
-                        <Stack>
-                            <CardBody my={5}>
-                                <Heading size='md'>{hotel.name}</Heading>
+                        <Card
+                            direction={{ base: 'column', sm: 'row' }}
+                            overflow='hidden'
+                            variant='outline'
+                            key={hotel.id}
+                            my={10}
+                        >
 
-                                <Text py='2'>
-                                    {hotel.descriptionlist}
-                                </Text>
-                                <Heading size='md'>Room Facility</Heading>
+                            <RouterLink to={`/room-details/${hotel.id}`}>
+                                <Image
+                                    objectFit='cover'
+                                    // minW={{ base: '100%', sm: '300px' }}
+                                    w="1000px" h="100%"
+                                    src={hotel.image}
+                                    alt={hotel.name}
+                                />
+                                <div
+                                    className="cost">
+                                    <h2>₹ {hotel.perNight}</h2>
+                                    <p>Per Night</p>
+                                </div>
+                            </RouterLink>
 
-                                <Text py='2'>
-                                    {hotel.breakfastinclide}, {hotel.freewifi}, {hotel.privatebalcony}, {hotel.fullac}, {hotel.FlatScreenTV}, {hotel.RoomService}
-                                </Text>
-                                {/* <RouterLink to={`/hotel-details/${hotel.id}`}>
+                            <Stack>
+                                <CardBody my={5}>
+                                    <Heading size='md'>{hotel.name}</Heading>
+
+                                    <Text py='2'>
+                                        {hotel.descriptionlist}
+                                    </Text>
+                                    <Heading size='md'>Room Facility</Heading>
+
+                                    <Text py='2'>
+                                        {hotel.breakfastinclide}, {hotel.freewifi}, {hotel.privatebalcony}, {hotel.fullac}, {hotel.FlatScreenTV}, {hotel.RoomService}
+                                    </Text>
+                                    {/* <RouterLink to={`/hotel-details/${hotel.id}`}>
                                     <Button colorScheme='blue'>
                                         Hotel Details
                                     </Button>
                                 </RouterLink> */}
-                            </CardBody>
-                        </Stack>
-                    </Card>
+                                </CardBody>
+                            </Stack>
+                        </Card>
 
-                ))}
-            </div>
+                    ))}
+                </div>
 
-        </Box>
+            </Box>
+        </>
 
     )
 }

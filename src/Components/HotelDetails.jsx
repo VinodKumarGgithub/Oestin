@@ -94,7 +94,7 @@ export const HotelDetails = () => {
 
     // Posting Date Data End
 
-    
+
     var price = data.perNight;
     const checkInDate = new Date(dateStart);
     const checkOutDate = new Date(dateEnd);
@@ -120,163 +120,174 @@ export const HotelDetails = () => {
     // console.log('Number of nights:', numNights);
     // console.log('Total price:', totalPrice);
 
-    const handleImgchange = (img,name) => {
+    const handleImgchange = (img, name) => {
         setImg(img)
-        console.log(img,'//');
+        console.log(img, '//');
     }
 
     return (
         <>
-        <section>
-            <div className="container mt-5">
-                <div className="row">
-                    <div className="col-md-8 right">
-                        <div style={{ position: "relative" }}>
-                            <img src={imgShow} alt={data.name} />
-                            <div className="cost">
-                                <h2>₹ {price}</h2>
-                                <p>Per Night</p>
-                            </div>
-                        </div>
-
-                        <div className="my-4">
-                            <div onClick={()=>handleImgchange(data.image_1,data.name)} >
-                                <img src={data.image_1} alt={data.name} />
-                            </div>
-                            <div onClick={()=>handleImgchange(data.image_2,data.name)}>
-                                <img src={data.image_2} alt={data.name} />
-                            </div>
-                            <div onClick={()=>handleImgchange(data.image_3,data.name)}>
-                                <img src={data.image_3} alt={data.name} />
-                            </div>
-                            <div onClick={()=>handleImgchange(data.image_4,data.name)}>
-                                <img src={data.image_4} alt={data.name} />
-                            </div>
-                        </div>
-
-
-                        <div className="my-4">
-                            <h2 className="room-details-title mb-4 pb-2">DESCRIPTION OF ROOM</h2>
-                            <p>{data.descriptionsingle_1}</p>
-                            <p>{data.descriptionsingle_2}</p>
-                            <p>{data.descriptionsingle_3}</p>
-                            <p>{data.descriptionsingle_4}</p>
-                        </div>
-                        <div>
-                            <h2 className="room-details-title mb-4 pb-2">ROOM FACILITIES</h2>
-                            <ul>
-                                <li><span className="rightIcon"><i className="fa-solid fa-check"></i></span>{data.name}</li>
-                                <li><span className="rightIcon"><i className="fa-solid fa-check"></i></span>{data.roomsize}</li>
-                                <li><span className="rightIcon"><i className="fa-solid fa-check"></i></span>{data.perperson}</li>
-                                <li><span className="rightIcon"><i className="fa-solid fa-check"></i></span>{data.freeinternet}</li>
-                                <li><span className="rightIcon"><i className="fa-solid fa-check"></i></span>{data.breakfastinclide}</li>
-                                <li><span className="rightIcon"><i className="fa-solid fa-xmark"></i></span>{data.freewifi}</li>
-                                <li><span className="rightIcon"><i className="fa-solid fa-check"></i></span>{data.privatebalcony}</li>
-                                <li><span className="rightIcon"><i className="fa-solid fa-check"></i></span>{data.freenewspaper}</li>
-                                <li><span className="rightIcon"><i className="fa-solid fa-check"></i></span>{data.fullac}</li>
-                                <li><span className="rightIcon"><i className="fa-solid fa-xmark"></i></span>{data.FlatScreenTV}</li>
-                                <li><span className="rightIcon"><i className="fa-solid fa-check"></i></span>{data.BeachView}</li>
-                                <li><span className="rightIcon"><i className="fa-solid fa-xmark"></i></span>{data.RoomService}</li>
-                            </ul>
+            <section className="bg">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-12 text-center bg-head text-white">
+                            <h2 style={{ color: "white" }}>ROOM - LIST VIEW</h2>
+                            <p>A quality room of Oestin with sea or mountain view</p>
                         </div>
                     </div>
-                    <div className="col-md-4">
-                        <div className="reservation">
-                            <h4 className="room-details-title">YOUR RESERVATION</h4>
-                            <form onSubmit={handleSubmit}>
-                                <Input
-                                    type="date"
-                                    placeholder="MM/DD/YYYY"
-                                    value={dateStart}
-                                    bg='white'
-                                    onChange={(e) => setDateStart(e.target.value)}
-                                    required
-                                />
-                                <Input
-                                    type="date"
-                                    placeholder="MM/DD/YYYY"
-                                    value={dateEnd}
-                                    bg='white'
-                                    onChange={(e) => setDateEnd(e.target.value)}
-                                    required
-                                />
-                                <Select value={adults} bg='white' onChange={(e) => setAdults(parseInt(e.target.value))} required>
-                                    <option>ADULTS</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                </Select>
-                                <Select value={children} bg='white' onChange={(e) => setChildren(parseInt(e.target.value))} required>
-                                    <option>CHILDREN</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                </Select>
-                                <p id="showAlertfields"></p>
-                                <div>
-                                    <Button bg='white' className="btn texr-center default-btn" type="submit" >CHECK AVAILABILITY</Button>
-                                </div>
-                            </form>
-                        </div>
-                        <div className="contact my-4">
-                            <p>If you have any question please don't hesitate to contact us</p>
-                            <div className="phoneEmail">
-                                <p><i className="fa-solid fa-phone"></i></p>
-                                <div>
-                                    <p>0123456789</p>
-                                    <p>0123456789</p>
+                </div>
+            </section>
+
+            <section>
+                <div className="container mt-5">
+                    <div className="row">
+                        <div className="col-md-8 right">
+                            <div style={{ position: "relative" }}>
+                                <img src={imgShow} alt={data.name} />
+                                <div className="cost">
+                                    <h2>₹ {price}</h2>
+                                    <p>Per Night</p>
                                 </div>
                             </div>
-                            <div className="phoneEmail">
-                                <p><i className="fa-solid fa-envelope"></i></p>
-                                <div>
-                                    <p>demo@example.com</p>
-                                    <p>demo@example.com</p>
+
+                            <div className="my-4">
+                                <div onClick={() => handleImgchange(data.image_1, data.name)} >
+                                    <img src={data.image_1} alt={data.name} />
                                 </div>
+                                <div onClick={() => handleImgchange(data.image_2, data.name)}>
+                                    <img src={data.image_2} alt={data.name} />
+                                </div>
+                                <div onClick={() => handleImgchange(data.image_3, data.name)}>
+                                    <img src={data.image_3} alt={data.name} />
+                                </div>
+                                <div onClick={() => handleImgchange(data.image_4, data.name)}>
+                                    <img src={data.image_4} alt={data.name} />
+                                </div>
+                            </div>
+
+
+                            <div className="my-4">
+                                <h2 className="room-details-title mb-4 pb-2">DESCRIPTION OF ROOM</h2>
+                                <p>{data.descriptionsingle_1}</p>
+                                <p>{data.descriptionsingle_2}</p>
+                                <p>{data.descriptionsingle_3}</p>
+                                <p>{data.descriptionsingle_4}</p>
+                            </div>
+                            <div>
+                                <h2 className="room-details-title mb-4 pb-2">ROOM FACILITIES</h2>
+                                <ul>
+                                    <li><span className="rightIcon"><i className="fa-solid fa-check"></i></span>{data.name}</li>
+                                    <li><span className="rightIcon"><i className="fa-solid fa-check"></i></span>{data.roomsize}</li>
+                                    <li><span className="rightIcon"><i className="fa-solid fa-check"></i></span>{data.perperson}</li>
+                                    <li><span className="rightIcon"><i className="fa-solid fa-check"></i></span>{data.freeinternet}</li>
+                                    <li><span className="rightIcon"><i className="fa-solid fa-check"></i></span>{data.breakfastinclide}</li>
+                                    <li><span className="rightIcon"><i className="fa-solid fa-xmark"></i></span>{data.freewifi}</li>
+                                    <li><span className="rightIcon"><i className="fa-solid fa-check"></i></span>{data.privatebalcony}</li>
+                                    <li><span className="rightIcon"><i className="fa-solid fa-check"></i></span>{data.freenewspaper}</li>
+                                    <li><span className="rightIcon"><i className="fa-solid fa-check"></i></span>{data.fullac}</li>
+                                    <li><span className="rightIcon"><i className="fa-solid fa-xmark"></i></span>{data.FlatScreenTV}</li>
+                                    <li><span className="rightIcon"><i className="fa-solid fa-check"></i></span>{data.BeachView}</li>
+                                    <li><span className="rightIcon"><i className="fa-solid fa-xmark"></i></span>{data.RoomService}</li>
+                                </ul>
                             </div>
                         </div>
-                        <div className="popular">
-                            <h4 className="room-details-title">POPULAR POSTS</h4>
-                            <div className="phoneEmail mt-4">
-                                <div>
-                                    <img src="https://htmldemo.net/oestin/oestin/img/sidebar/1.jpg" alt="s1" />
+                        <div className="col-md-4">
+                            <div className="reservation">
+                                <h4 className="room-details-title">YOUR RESERVATION</h4>
+                                <form onSubmit={handleSubmit}>
+                                    <Input
+                                        type="date"
+                                        placeholder="MM/DD/YYYY"
+                                        value={dateStart}
+                                        bg='white'
+                                        onChange={(e) => setDateStart(e.target.value)}
+                                        required
+                                    />
+                                    <Input
+                                        type="date"
+                                        placeholder="MM/DD/YYYY"
+                                        value={dateEnd}
+                                        bg='white'
+                                        onChange={(e) => setDateEnd(e.target.value)}
+                                        required
+                                    />
+                                    <Select value={adults} bg='white' onChange={(e) => setAdults(parseInt(e.target.value))} required>
+                                        <option>ADULTS</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                    </Select>
+                                    <Select value={children} bg='white' onChange={(e) => setChildren(parseInt(e.target.value))} required>
+                                        <option>CHILDREN</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                    </Select>
+                                    <p id="showAlertfields"></p>
+                                    <div>
+                                        <Button bg='white' className="btn texr-center default-btn" type="submit" >CHECK AVAILABILITY</Button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div className="contact my-4">
+                                <p>If you have any question please don't hesitate to contact us</p>
+                                <div className="phoneEmail">
+                                    <p><i className="fa-solid fa-phone"></i></p>
+                                    <div>
+                                        <p>0123456789</p>
+                                        <p>0123456789</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <p>POST DEMO TITLE</p>
-                                    <p>22 Dec, 2019</p>
+                                <div className="phoneEmail">
+                                    <p><i className="fa-solid fa-envelope"></i></p>
+                                    <div>
+                                        <p>demo@example.com</p>
+                                        <p>demo@example.com</p>
+                                    </div>
                                 </div>
                             </div>
-                            <div className="phoneEmail mt-3">
-                                <div>
-                                    <img src="https://htmldemo.net/oestin/oestin/img/sidebar/2.jpg" alt="s2" />
+                            <div className="popular">
+                                <h4 className="room-details-title">POPULAR POSTS</h4>
+                                <div className="phoneEmail mt-4">
+                                    <div>
+                                        <img src="https://htmldemo.net/oestin/oestin/img/sidebar/1.jpg" alt="s1" />
+                                    </div>
+                                    <div>
+                                        <p>POST DEMO TITLE</p>
+                                        <p>22 Dec, 2019</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <p>POST DEMO TITLE</p>
-                                    <p>10 Feb, 2019</p>
+                                <div className="phoneEmail mt-3">
+                                    <div>
+                                        <img src="https://htmldemo.net/oestin/oestin/img/sidebar/2.jpg" alt="s2" />
+                                    </div>
+                                    <div>
+                                        <p>POST DEMO TITLE</p>
+                                        <p>10 Feb, 2019</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="phoneEmail mt-3">
-                                <div>
-                                    <img src="https://htmldemo.net/oestin/oestin/img/sidebar/3.jpg" alt="s3" />
-                                </div>
-                                <div>
-                                    <p>POST DEMO TITLE</p>
-                                    <p>06 Mar, 2019</p>
+                                <div className="phoneEmail mt-3">
+                                    <div>
+                                        <img src="https://htmldemo.net/oestin/oestin/img/sidebar/3.jpg" alt="s3" />
+                                    </div>
+                                    <div>
+                                        <p>POST DEMO TITLE</p>
+                                        <p>06 Mar, 2019</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-        <Clientarea/>
-        </section>
+                <Clientarea />
+            </section>
         </>
 
     )
