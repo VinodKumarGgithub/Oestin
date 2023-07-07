@@ -1,13 +1,21 @@
 import { Button, Flex,Box, Spacer, Input, Select, Text, HStack,Image,Heading } from "@chakra-ui/react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Availibility = () =>{
+
+    const navigate = useNavigate();
+
     let [query,setQuery] = useState({
         from:'',
         to:'',
         children:'',
         adults:'',
      })
+
+     const toDetails = () => {
+      navigate(`/room-details/1`)
+     }
     return (
         <Box  display="flex" alignItems="center" 
         justifyContent="space-evenly"
@@ -86,7 +94,7 @@ export const Availibility = () =>{
         background='#b5876d none repeat scroll 0 0' 
         fontSize='90%'
         className="default-btn"
-        onClick={()=>console.log(query)}
+        onClick={toDetails}
         >CHECK AVAILABILITY</Button>
          
         </Box>

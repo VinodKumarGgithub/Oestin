@@ -172,12 +172,12 @@ export const Signup = ({ handlePage, setPassword, handleUsername }) => {
   return (
     <div id="login_popup">
       <h3>LOGIN OR SIGNUP</h3>
-      <p>For a quicker checkin</p>
+      <p></p>
       <p id="close" onClick={() => handleLoginClose(false)}>&times;</p>
       <input type="text" placeholder="Enter Mobile/Email" id="ph_number" value={username} onChange={(e) => setUserName(e.target.value)} />
       <span style={{ display: "none" }}>Mobile/Email is required!</span>
       <button id="login_btn" onClick={verify}>CONTINUE</button>
-      <h5 id="login_line"><span>Or continue with</span></h5>
+      {/* <h5 id="login_line"><span>Or continue with</span></h5> */}
       <div id="login_fg">
         <Link to="#" id="l_fb"><img src="https://www.faballey.com/images/loginfb.png" alt="facebook" /></Link>
         <Link to="#" id="l_google"><img src="https://www.faballey.com/images/logingogl.png" alt="google" /></Link>

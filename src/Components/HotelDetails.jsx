@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import "../Components/hotelDetails.css"
-import { Button, Grid, Input, Select } from '@chakra-ui/react'
+import { Button, Grid, Input, Select, useToast } from '@chakra-ui/react'
 import { RoomCard } from "./HomeComponents/RoomSec/RoomCard";
 import { RoomBox } from "./HomeComponents/RoomBox";
 import { Clientarea } from "./HomeComponents/ClinetArea";
+import { useDispatch } from "react-redux"
+import { CartValue } from "../Redux/action"
 
 export const HotelDetails = () => {
 
@@ -16,6 +18,9 @@ export const HotelDetails = () => {
     const [children, setChildren] = useState(0);
     let RoomArr = Array(4).fill(0)
 
+
+    const dispatch = useDispatch()
+
     const { id } = useParams();
 
     const navigate = useNavigate();
@@ -23,6 +28,29 @@ export const HotelDetails = () => {
     const [data, setData] = useState([]);
 
 
+    var totalPrice;
+
+    const toast = useToast()
+
+    const handleAvailable = () => {
+        toast({
+            title: 'Available',
+            position: 'top-right',
+            status: 'success',
+            duration: 3000,
+            isClosable: true,
+        })
+    }
+    const handleError = (mes) => {
+        toast({
+            title: 'Not Available',
+            position: 'top-right',
+            description: `${mes}`,
+            status: 'error',
+            duration: 3000,
+            isClosable: true,
+        })
+    }
     // Get Single Hotel Data Sart
 
     const getSingleData = () => {
@@ -79,16 +107,19 @@ export const HotelDetails = () => {
                 "Per Night Price: ₹ " + price + "\n" +
                 "Number of Nights: " + numNights + "\n" +
                 "Total Price: " + totalPrice;
-            alert(alertMessage);
+            // alert(alertMessage);
             if (totalPrice === data.name + " Can't Go With More Members") {
                 navigate(`/room-details/${id}`)
             } else {
+                handleAvailable()
+                dispatch(CartValue(totalPrice))
                 navigate(`/Payment`)
             }
 
         } else {
             console.log("DataNOt ADDED")
-            alert(data.name + " Can't Go With More Members")
+            // alert(data.name + " Can't Go With More Members")
+            handleError(data.name + " Can't Go With More Members");
         }
     }
 
@@ -104,7 +135,7 @@ export const HotelDetails = () => {
     // Calculate the number of nights
     const numNights = Math.round((checkOutDate - checkInDate) / (1000 * 60 * 60 * 24)) + 1;
 
-    var totalPrice;
+
 
     if (
         (data.name === "Single Room" && adults <= 2 && children <= 1) ||
