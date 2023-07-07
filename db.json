@@ -208,6 +208,15 @@
       "price": 1500,
       "numOfNights": 2,
       "id": 11
+    },
+    {
+      "dateStart": "2023-07-08",
+      "dateEnd": "2023-07-15",
+      "adults": 2,
+      "children": 0,
+      "price": 1500,
+      "numOfNights": 8,
+      "id": 12
     }
   ]
 }
