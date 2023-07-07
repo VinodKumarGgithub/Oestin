@@ -1,6 +1,7 @@
 
 
 import {
+  CART_VALUE,
   GET_HOTEL_FAILURE,
   GET_HOTEL_REQUEST,
   GET_HOTEL_SUCCESS,
@@ -24,19 +25,18 @@ export const handleLoginFailure = (payload) => {
 };
 
 export const handleUserList = (payload) => {
-  return {
-    type: 'ADD_USER',
-    payload,
+  return { type: 'ADD_USER', payload,
   };
 };
 
 export const handleGetUserList = (payload) => {
-  return {
-    type: 'GET_USER_LIST',
-    payload,
+  return { type: 'GET_USER_LIST',payload,
   };
 };
 
+export const CartValue = (payload) => {
+  return ({ type: CART_VALUE,payload })
+}
 
 export const getHotelRequest = () => {
   return ({ type: GET_HOTEL_REQUEST })

@@ -1,4 +1,5 @@
 import {
+  CART_VALUE,
   GET_HOTEL_FAILURE,
   GET_HOTEL_REQUEST,
   GET_HOTEL_SUCCESS,
@@ -14,7 +15,8 @@ const initState = {
     isLoading: false,
     isError: false,
     login_status: false,
-    booking: []
+    booking: [],
+    cart_value:10
   };
   
   export const reducer = (state = initState, { type, payload }) => {
@@ -39,6 +41,11 @@ const initState = {
           ...state,
           UserList: payload,
         };
+      case CART_VALUE : 
+      return {
+        ...state,
+        cart_value:payload
+      }
         case GET_HOTEL_REQUEST:
           return {
               ...state,

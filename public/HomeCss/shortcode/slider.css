@@ -173,3 +173,8 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.h_container{
+
+    background-image: url('img/slider/1.jpg');
+  }

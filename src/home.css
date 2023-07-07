@@ -1,3 +1,6 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap');
 .h-social-icon {
     margin-top: 2em;
     width: 80%;
@@ -432,7 +435,115 @@ p+#close {
   border: 1px solid rgb(24, 15, 15);
 }
 
+/* payment____________css__________________________________ */
 
+*{
+  font-family: 'Poppins', sans-serif;
+  margin:0; padding:0;
+  box-sizing: border-box;
+  outline: none; border:none;
+  text-transform: capitalize;
+  transition: all .2s linear;
+}
+
+.h_container{
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 120vh;
+}
+
+.h_container form{
+  box-shadow: #422F0B 0px 10px 20px !important;
+  padding:20px;
+  width:700px;
+  background: rgba(0, 0, 0, 0.686);
+  border-radius: 5px;
+  color: white;
+  box-shadow: 0 5px 10px rgba(0,0,0,.1);
+}
+
+.h_container form .row{
+  display: flex;
+  flex-wrap: wrap;
+  gap:25px;
+}
+
+.h_container form .row .col{
+  flex:1 1 250px;
+}
+
+.h_container form .row .col .title{
+  font-size: 20px;
+  color:white;
+  padding-bottom: 5px;
+  text-transform: uppercase;
+}
+
+.h_container form .row .col .inputBox{
+  margin:15px 0;
+  border-radius: 5px;
+}
+
+.h_container form .row .col .inputBox span{
+  margin-bottom: 5px;
+  display: block;
+}
+
+.h_container form .row .col .inputBox input{
+  width: 100%;
+  border:1px solid #ccc;
+  padding:10px 10px;
+  font-size: 15px;
+  text-transform: none;
+  border-radius: 5px;
+}
+
+.h_container form .row .col .inputBox input:focus{
+  border:1px solid #000;
+}
+
+.h_container form .row .col .flex{
+  display: flex;
+  gap:20px;
+}
+
+.h_container form .row .col .flex .inputBox{
+  margin-top: 5px;
+}
+
+.h_container form .row .col .inputBox img{
+  height: 34px;
+  margin-top: 5px;
+  filter: drop-shadow(0 0 1px #000);
+}
+
+.h_container form .submit-btn{
+  width: 50%;
+  align-content: center;
+  text-align: center;
+  border-radius: 10px;
+  /* padding:12px; */
+  font-size: 17px;
+  color:whitesmoke;
+  background: rgba(0, 128, 0, 0.777);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.h_container form .submit-btn:hover{
+  background: rgb(23, 186, 63);
+
+   
+}
+#btn{
+  text-align: center;
+}
+
+/* payement css___ends___________here */
 @media all and (max-width:600px) {
   #abouth_us>div:first-child{
     margin-bottom: 1em;
@@ -499,15 +610,15 @@ p+#close {
       -webkit-box-orient: vertical;
    
   }
-  .container .header-top {
+  .h_container .header-top {
   display: none;
   }
-  .container .main-menu {
+  .h_container .main-menu {
     display: flex !important;
     padding: 0 0.3em;
     text-align: center;
     }
-    .container .main-menu li{
+    .h_container .main-menu li{
       padding:  0.5em 0;
       font-size: small;
       color: whitesmoke;
