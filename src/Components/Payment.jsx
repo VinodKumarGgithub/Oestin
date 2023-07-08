@@ -135,7 +135,7 @@ const handlePaymentSuccess = () => {
     
                 <div className="col">
     
-                    <div style={{display:'flex', justifyContent: "space-between"}}><h3 className="title">payment</h3><h3 className="title" id="price">$ {cart_value}</h3></div>
+                    <div style={{display:'flex', justifyContent: "space-between"}}><h3 className="title">payment</h3><h3 className="title" id="price">{cart_value}</h3></div>
     
                     <div className="inputBox">
                         <span>cards accepted :</span>

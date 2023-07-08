@@ -19,7 +19,7 @@ const initState = {
     isError: false,
     login_status: false,
     booking: [],
-    cart_value:10
+    cart_value:'$10'
   };
   
   export const reducer = (state = initState, { type, payload }) => {
