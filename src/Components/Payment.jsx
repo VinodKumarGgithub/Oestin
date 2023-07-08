@@ -15,7 +15,7 @@ let [carData,setData] = useState({
 let cart_value = useSelector(state=>state.cart_value )
 const navigate = useNavigate()
 const toast = useToast()
-
+console.log(carData.input,'p-e');
 // =========================
 //             Toast        
 // ========================
@@ -27,7 +27,6 @@ const handlePaymentSuccess = () => {
       duration: 3000,
       isClosable: true,
     })
-    handleMail()
     navigate('/payment-success')
   }
 
@@ -67,9 +66,13 @@ const handlePaymentSuccess = () => {
                   <p><span>Room No:- ${Math.floor(Math.random() * 900) + 100}.</span></p>
                   <br />
                   <p>From: 2023-07-10 </p>
-                  <p>PASSWORD: 2023-07-14 </p>
+                  <p>To  : 2023-07-14 </p>
                 </body>
                 </html>`,
+      }).then(()=>{
+        handlePaymentSuccess()
+      }).catch(()=>{
+        console.log('Email Failed');
       })
   }
 // =========================
@@ -79,7 +82,7 @@ const handlePaymentSuccess = () => {
    const handleSubmit = (e) => {
         e.preventDefault();
         if ("123456789" === carData.card_number&&'123' === carData.cvv) {
-            handlePaymentSuccess()
+            handleMail()
         } else {
           handlePaymentFailure()
         }
