@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom'
 
 export const Payment = () => {
 let [carData,setData] = useState({
+    input:'',
     card_number: 0,
     cvv: '',
 })
@@ -26,6 +27,7 @@ const handlePaymentSuccess = () => {
       duration: 3000,
       isClosable: true,
     })
+    handleMail()
     navigate('/payment-success')
   }
 
@@ -38,6 +40,37 @@ const handlePaymentSuccess = () => {
       duration: 3000,
       isClosable: true,
     })
+  }
+
+  const handleMail = () => {
+    window.Email.send({
+        SecureToken: "dc989647-f40e-45dc-b708-b7b85e1361bf",
+        Host: "smtp.elasticemail.com",
+        Username: "vkvinu.com@gmail.com",
+        Password: "6178B5D2C5BE6581D19F213604CB943C50C0",
+        To: `${carData.input}`,
+        From: "vkvinu.com@gmail.com",
+        Subject: "Booking Confirmed",
+
+        Body: `<!DOCTYPE html>
+                <html lang="en">
+                <head>
+                  <meta charset="UTF-8">
+                  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                  <title>Oestin</title>
+                </head>
+                <body>
+               
+                  <p>Hello,</p>
+                  <p><span> We're thrilled you Choose us!</span></p>
+                  <p><span>Room No:- ${Math.floor(Math.random() * 900) + 100}.</span></p>
+                  <br />
+                  <p>From: 2023-07-10 </p>
+                  <p>PASSWORD: 2023-07-14 </p>
+                </body>
+                </html>`,
+      })
   }
 // =========================
 //         Toast--End       
@@ -74,7 +107,7 @@ const handlePaymentSuccess = () => {
                     </div>
                     <div className="inputBox">
                         <span>email :</span>
-                        <input type="email" id="email" placeholder="example@example.com" required />
+                        <input type="email" id="email" placeholder="example@example.com" required onChange={(e)=>setData({...carData,input:e.target.value})}/>
                     </div>
                     <div className="inputBox">
                         <span>address :</span>

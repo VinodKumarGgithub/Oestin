@@ -113,7 +113,7 @@ export const Signup = ({ handlePage, setPassword, handleUsername }) => {
                     <p><span> We're thrilled you Choose us!</span></p>
                     <p><span>To make your future shopping experience super quick and easy, we created a Oestin account for you.</span></p>
                     <p>EMAIL ID: ${input} </p>
-                    <p>PASSWORD: *${password}*</p>
+                    <p>PASSWORD: ${password}</p>
                     <p>This password is auto generated and can be changed by going onto your profile.</p>
                   </body>
                   </html>`,
