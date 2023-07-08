@@ -14,10 +14,12 @@ export const Thankyou = () => {
   useEffect(() => {
     const header = window.document.querySelector('#root .header-area');
     const footer = window.document.querySelector('#root .footer-area');
+    const mobileNav = window.document.querySelector('#root #mobile-menu-area_r #dropdown ul');
 
     if (header && footer) {
       header.style.display = 'none';
       footer.style.display = 'none';
+      mobileNav.style.display = 'none';
     }
 
     myFunction();
@@ -26,6 +28,7 @@ export const Thankyou = () => {
       if (header && footer) {
         header.style.display = 'block';
         footer.style.display = 'block';
+        mobileNav.style.display = 'block';
       }
     };
   }, []);

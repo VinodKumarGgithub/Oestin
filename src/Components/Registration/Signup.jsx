@@ -32,7 +32,17 @@ export const Signup = ({ handlePage, setPassword, handleUsername }) => {
       title: `Your OTP is: - ${Otp}`,
       position: 'top-right',
       status: 'success',
-      duration: 9000,
+      duration: 5000,
+      isClosable: true,
+    })
+  }
+
+  const handleError = (Otp) => {
+    toast({
+      title: `Error Please Try Again`,
+      position: 'top-right',
+      status: 'Warning',
+      duration: 3000,
       isClosable: true,
     })
   }
@@ -64,9 +74,10 @@ export const Signup = ({ handlePage, setPassword, handleUsername }) => {
       RoomNo: 1,
     };
 
+    console.log(username,'fvsdfv');
     let flag = true
     if (input.includes("@gmail.com") || Number.parseInt(input) && input.length > 9) {
-
+         
       // check existing customer
       users.map(function (ele) {
         if (ele.mail == input || ele.ph == input) {
@@ -82,12 +93,10 @@ export const Signup = ({ handlePage, setPassword, handleUsername }) => {
       return;
     }
 
-
+  console.log(flag,'fvsdfv');
     //    New User's
     if (flag) {
       if (input.includes("@gmail.com")) {
-        console.log("email... New :", Otp);
-        
 
         //  email for new user_________________________________________________
         window.Email.send({
@@ -132,6 +141,7 @@ export const Signup = ({ handlePage, setPassword, handleUsername }) => {
             // window.location.href="index.html-----------"
           } else {
             // alert(message);
+            handleError()
           }
         }).catch((err) => {
           //   alert(err)

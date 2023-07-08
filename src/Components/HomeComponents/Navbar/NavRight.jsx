@@ -37,7 +37,7 @@ export const NavRight = () => {
     return (
         <>
         {/*  Mobile Menu Area start  */}
-        <div className="mobile-menu-area" style={{padding:'0px'}}>
+        <div className="mobile-menu-area" id="mobile-menu-area_r" style={{padding:'0px'}}>
            
                             <nav id="dropdown">
                                 <ul>
