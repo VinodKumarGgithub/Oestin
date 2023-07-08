@@ -34,8 +34,9 @@ export const Password = ({handlePage,user,password}) => {
    
   useEffect(()=>{
    getdata(dispatch)
-   console.log(users,'[][///');
+
   },[user])
+  
     function passValidation() {
         // password
        let flag =true

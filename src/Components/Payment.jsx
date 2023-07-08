@@ -15,7 +15,6 @@ let [carData,setData] = useState({
 let cart_value = useSelector(state=>state.cart_value )
 const navigate = useNavigate()
 const toast = useToast()
-console.log(carData.input,'p-e');
 // =========================
 //             Toast        
 // ========================
