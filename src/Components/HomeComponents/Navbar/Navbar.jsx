@@ -8,8 +8,8 @@ export const Navbar = ({scrollDistance}) => {
         <>
          <header className="header-area fixed header-sticky" id={scrollDistance>=11?"NavBottomSec-show":""}>
         <NavbarLeft scrollDistance={scrollDistance}  />
-       {/* <NavRight /> */}
     </header>
+    <NavRight />
         </>
     )
 }

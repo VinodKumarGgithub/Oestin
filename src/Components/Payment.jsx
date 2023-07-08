@@ -3,7 +3,8 @@ import { Input } from "@chakra-ui/input";
 import { Box } from "@chakra-ui/layout";
 import { useToast } from "@chakra-ui/toast";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from 'react-router-dom'
 
 export const Payment = () => {
 let [carData,setData] = useState({
@@ -11,8 +12,12 @@ let [carData,setData] = useState({
     cvv: '',
 })
 let cart_value = useSelector(state=>state.cart_value )
+const navigate = useNavigate()
 const toast = useToast()
 
+// =========================
+//             Toast        
+// ========================
 const handlePaymentSuccess = () => {
     toast({
       title: `Payment Successfull`,
@@ -21,6 +26,7 @@ const handlePaymentSuccess = () => {
       duration: 3000,
       isClosable: true,
     })
+    navigate('/payment-success')
   }
 
   const handlePaymentFailure = () => {
@@ -33,6 +39,9 @@ const handlePaymentSuccess = () => {
       isClosable: true,
     })
   }
+// =========================
+//         Toast--End       
+// ========================
 
    const handleSubmit = (e) => {
         e.preventDefault();
@@ -47,9 +56,6 @@ const handlePaymentSuccess = () => {
 
       },[])
       
-      let price = localStorage.getItem('cart_Value') || 100;
-      
-    //   document.getElementById('price').textContent = `€ ${price}`;
 
     return (
         <Box className="h_container" backgroundImage='img/slider/1.jpg' >

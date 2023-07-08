@@ -1,37 +1,58 @@
+import { Link } from "react-router-dom"
 import { NavbarLeft } from "./NavbarLeft"
+import { useDispatch, useSelector } from "react-redux";
+import { useContext, useEffect } from "react";
+import { MyContext } from "../../../ContextApi/MyContext";
+import { useToast } from "@chakra-ui/react";
+import { handleLoginFailure } from "../../../Redux/action";
 
 
 export const NavRight = () => {
-
+    const { handleLoginClose, loginPopup } = useContext(MyContext);
+    const login = useSelector((state) => (state.login_status));
+    let dispatch = useDispatch()
+    const toast = useToast()
+  
+    const handleLogoutToast = () => {
+      toast({
+        title: 'Logged-out successfull',
+        position: 'top-right',
+        status: 'success',
+        duration: 2000,
+        isClosable: true,
+      })
+    }
+  
+  
+  
+    useEffect(() => {
+      console.log(login, 'login_status');
+    }, []);
+  
+  
+    const handleLogout = () => {
+      dispatch(handleLoginFailure(false))
+      handleLogoutToast()
+    }
     return (
         <>
         {/*  Mobile Menu Area start  */}
-        <div className="mobile-menu-area">
-            <div className="container">
-                <div className="row">
-                    <div className="col-12">
-                        <div className="mobile-menu">
+        <div className="mobile-menu-area" style={{padding:'0px'}}>
+           
                             <nav id="dropdown">
                                 <ul>
-                                    <li><a href="/">HOME</a></li>
+                                    <li><Link to="/">HOME</Link></li>
                                     <li>
-                                        <a href="/room-list">ROOMS</a>
-                                        <ul className="submenu">
-                                            <li><a href="/room-list">ROOM LIST</a></li>
-                                            <li><a href="/hotel-details">ROOM DETAILS</a></li>
-                                        </ul>
+                                        <Link to="/room-list/">ROOMS</Link>
                                     </li>
-                                    <li><a href="#">LOCATION</a></li>
-                                    <li><a href="#">EVENT</a></li>
-                                    <li><a href="#">TEAM</a></li>
-                                    <li><a href="#">CONTACT</a></li>
+                                    <li><Link to="#">TEAM</Link></li>
+                                    {
+                    login? <li><Link className='profile' onClick={()=>handleLogout()}>LOGOUT</Link></li> :
+                    <li><Link className='profile' onClick={() => handleLoginClose(true)}>LOGIN</Link></li>
+                  }
                                 </ul>
                             </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </>
+                       </div>
+                   </>
     )
 }
