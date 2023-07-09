@@ -37,17 +37,17 @@ export const Signup = ({ handlePage, setPassword, handleUsername }) => {
     })
   }
 
-  const handleError = (Otp) => {
+  const handleError = () => {
     toast({
       title: `Error Please Try Again`,
       position: 'top-right',
-      status: 'Warning',
+      status: 'error',
       duration: 3000,
       isClosable: true,
     })
   }
 
-  function verify(user) {
+  function verify() {
     // OTP & PASSWORD Generate
     let Otp = "",
       password = "";
@@ -74,7 +74,6 @@ export const Signup = ({ handlePage, setPassword, handleUsername }) => {
       RoomNo: 1,
     };
 
-    console.log(username,'fvsdfv');
     let flag = true
     if (input.includes("@gmail.com") || Number.parseInt(input) && input.length > 9) {
          
@@ -93,7 +92,6 @@ export const Signup = ({ handlePage, setPassword, handleUsername }) => {
       return;
     }
 
-  console.log(flag,'fvsdfv');
     //    New User's
     if (flag) {
       if (input.includes("@gmail.com")) {
@@ -138,14 +136,13 @@ export const Signup = ({ handlePage, setPassword, handleUsername }) => {
             getdata(dispatch)
             handleMailToast()
             handlePage(2)
-            // window.location.href="index.html-----------"
           } else {
             // alert(message);
             handleError()
           }
         }).catch((err) => {
           //   alert(err)
-          //   dispatch(handleLoginFailure())
+            dispatch(handleLoginFailure())
           return;
         });
 
