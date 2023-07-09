@@ -9,11 +9,19 @@ import { Footer } from "./Footer/Footer";
 import { Gallery } from "./HomeComponents/Gallery/Gallery";
 import { Blogs } from "./HomeComponents/BlogSec/Blogs";
 import { Clientarea } from "./HomeComponents/ClinetArea";
+import {useEffect} from 'react'
 import { Pricing } from "./HomeComponents/Pricing/Pricing";
 import { Registration } from "./Registration/Registration";
+import { useDispatch } from "react-redux";
+import { getdata } from "../Redux/action";
 
 
 export const Home = () => {
+let dispatch = useDispatch()
+
+    useEffect(()=>{
+        getdata(dispatch)
+    },[])
     return (
        <div>
         <SliderSec />

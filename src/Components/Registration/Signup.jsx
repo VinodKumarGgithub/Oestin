@@ -16,6 +16,9 @@ export const Signup = ({ handlePage, setPassword, handleUsername }) => {
   const { handleLoginClose } = useContext(MyContext);
   const toast = useToast()
 
+  useEffect(()=>{
+    getdata(dispatch)
+  },[])
   const handleMailToast = () => {
     toast({
       title: 'Account created.',
@@ -125,12 +128,13 @@ export const Signup = ({ handlePage, setPassword, handleUsername }) => {
                   </body>
                   </html>`,
         }).then((message) => {
+          console.log('mail',message);
           if (message == "OK") {
             obj.mail = input;
             obj.Password = password;
 
             // post new user
-            users.push(obj);
+            // users.push(obj);
             postdata(obj);
             dispatch(handleUserList(obj))
             getdata(dispatch)
@@ -163,9 +167,7 @@ export const Signup = ({ handlePage, setPassword, handleUsername }) => {
         postdata(obj);
         handlePage(3, Otp)
         handleOtpToast(Otp)
-      } else {
-        alert("wrong creditional..!")
-      }
+      } 
     } else {
       wrong_cred.style.display = "block";
     }
@@ -181,7 +183,8 @@ export const Signup = ({ handlePage, setPassword, handleUsername }) => {
       <h3>LOGIN OR SIGNUP</h3>
       <p></p>
       <p id="close" onClick={() => handleLoginClose(false)}>&times;</p>
-      <input type="text" placeholder="Enter Mobile/Email" id="ph_number" value={username} onChange={(e) => setUserName(e.target.value)} />
+      <input type="text" placeholder="Enter Mobile/Email" id="ph_number" value={username} onChange={(e) =>{ setUserName(e.target.value); 
+    getdata(dispatch) }} />
       <span style={{ display: "none" }}>Mobile/Email is required!</span>
       <button id="login_btn" onClick={verify}>CONTINUE</button>
       {/* <h5 id="login_line"><span>Or continue with</span></h5> */}
