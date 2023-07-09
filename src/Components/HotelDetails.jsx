@@ -262,6 +262,7 @@ export const HotelDetails = () => {
                                     <Input
                                         type="date"
                                         placeholder="MM/DD/YYYY"
+                                        min={`${dateStart}`}
                                         value={dateEnd}
                                         bg='white'
                                         onChange={(e) => setDateEnd(e.target.value)}
